@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `mydb` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `mydb`;
 -- MySQL dump 10.13  Distrib 5.7.11, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: mydb
@@ -195,7 +193,7 @@ CREATE TABLE `elective_course` (
 
 LOCK TABLES `elective_course` WRITE;
 /*!40000 ALTER TABLE `elective_course` DISABLE KEYS */;
-INSERT INTO `elective_course` VALUES (1,2,'lecturer2',2,'2+2+2',50,5),(2,3,'lecturer1',2,'3+2+1',100,100),(3,6,'lecturer1',2,'3+3+3',75,74);
+INSERT INTO `elective_course` VALUES (1,2,'lecturer2',2,'2+2+2',50,8),(2,3,'lecturer1',2,'3+2+1',100,100),(3,6,'lecturer1',2,'3+3+3',75,74);
 /*!40000 ALTER TABLE `elective_course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,7 +222,7 @@ CREATE TABLE `electives_campaign` (
 
 LOCK TABLES `electives_campaign` WRITE;
 /*!40000 ALTER TABLE `electives_campaign` DISABLE KEYS */;
-INSERT INTO `electives_campaign` VALUES (1,'2016-03-22 00:00:00','2016-04-18 00:00:00','2016-04-20 00:00:00',1),(2,'2016-04-21 00:00:00','2016-06-01 00:00:00','2016-07-01 00:00:00',2);
+INSERT INTO `electives_campaign` VALUES (1,'2016-03-22 00:00:00','2016-04-18 00:00:00','2016-04-20 00:00:00',1),(2,'2016-04-21 00:00:00','2016-07-01 00:00:00','2016-07-03 00:00:00',2);
 /*!40000 ALTER TABLE `electives_campaign` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -277,7 +275,7 @@ CREATE TABLE `event` (
   PRIMARY KEY (`id`),
   KEY `room_id` (`room_id`),
   CONSTRAINT `event_ibfk_1` FOREIGN KEY (`room_id`) REFERENCES `room` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -286,7 +284,7 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
-INSERT INTO `event` VALUES (1,'EVE1','event1','descr1','2016-04-02','10:00:00','11:30:00',1),(2,'EVE2','event2','descr2','2016-04-03','11:30:00','12:00:00',NULL),(3,'EVE3','event3','descr3','2016-04-27','14:00:00','18:00:00',2),(4,'EVE4','event4','descr4','2016-05-02','11:00:00','14:00:00',NULL),(5,'EVE5','event5','descr5','2016-05-02','14:00:00','18:30:00',2),(6,'abbr','title','description ','2016-04-02','05:05:00','15:33:00',1),(8,'abbr2','title2','desc2','2016-04-18','05:19:00','23:15:00',NULL),(9,'abbr3','title3','ffff','2016-08-17','06:26:00','13:21:00',2),(10,'abbr5','title 5','descccc\n','2016-08-15','14:26:00','21:30:00',2),(11,'abbr01','title01','desccc','2016-07-14','09:40:00','10:43:00',2),(12,'abbr02','title02','ghggg','2016-09-15','10:42:00','14:38:00',2),(13,'zxcv','sdfsdfsd','cdfsdgmk.\nfdgdfngkdgdf\ngdf\ng\nfffg\ndfddd','2016-04-05','10:00:00','12:00:00',2),(14,'ccccc','cccccccccccc','cccccc\ncccc\nc\nc\nc\ncc\ncc\ncccc\nc','2016-04-24','09:30:00','10:30:00',NULL),(15,'rd','eve rd','eve rd','2016-05-03','10:00:00','11:30:00',1);
+INSERT INTO `event` VALUES (2,'EVE2','event2','descr2','2016-04-03','11:30:00','12:00:00',NULL),(5,'EVE5','event5','descr5','2016-05-02','14:00:00','18:30:00',2),(10,'abbr5','title 5','descccc\n','2016-08-15','14:26:00','21:30:00',2),(11,'abbr01','title01','desccc','2016-07-14','09:40:00','10:43:00',2),(12,'abbr02','title02','ghggg','2016-09-15','10:42:00','14:38:00',2),(18,'ev-test','ev-test','2016-09-30','2016-09-30','10:31:00','10:36:00',NULL),(20,'abbr','title','','2016-05-25','11:39:00','15:39:00',NULL),(21,'vv','xx','gg','2016-05-25','11:59:00','15:07:00',NULL),(22,'1234567890','qwertyuiop qwertyuo qwe','ggggvgb f d d d d  d dbjcd djd djd dhd djx dhd d','2016-05-25','13:27:00','18:27:00',NULL);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -326,12 +324,12 @@ DROP TABLE IF EXISTS `news`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `news` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(45) DEFAULT NULL,
+  `title` varchar(200) DEFAULT NULL,
   `text` text,
   `image` varchar(45) DEFAULT NULL,
   `creation_datetime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -340,7 +338,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
-INSERT INTO `news` VALUES (1,'title1','text1','large1.jpg','2016-04-27 00:00:00'),(2,'title2','Драги колеги,\nВ периода 17.07-24.07.2016 г. ФМИ ще бъде домакин на 30-тата Седмица по моделиране на Европейския консорциум за математика в индустрията (ЕКМИ). Това е престижен международен форум, на който студентите имат възможност да работят интензивно в продължение на една седмица в малки интернационални групи под ръководството на 10-15 преподаватели от водещи европейски университети по проекти, чиито теми са свързани с приложенията на математиката в индустрията, информационните технологии, биотехнологиите и др. Подробна информация за събитието, както и част от проектите, по които ще се работи, можете да откриете на уебсайта на Седмицата по моделиране ecmimw2016.fmi.uni-sofia.bg\nСтудентите от ФМИ, желаещи да вземат участие в събитието, трябва да изпратят на имейл адрес ecmimw2016@fmi.uni-sofia.bg следните документи в срок до 15.05.2016 г.:\nCV\nМотивационно писмо\nСправка за успех от следването до този момент\nПрепоръка от преподавател (незадължително)\nЩе бъдат избрани до 12 участници от ФМИ, които трябва да са със статут на бакалаври поне в трети курс, магистри или докторанти към летния семестър на учебната 2015/2016 година.\nУчастниците в Седмицата по моделиране на ЕКМИ ще получат по 3 ECTS кредита.\nДопълнителна информация можете да получите на имейл адрес ecmimw2016@fmi.uni-sofia.bg \nОт Организационния комитет','large2.jpg','2016-04-03 18:22:20'),(3,'title3','text3','large3.jpg','2016-04-03 18:22:20'),(4,'title4','text4','large4.jpg','2016-04-03 18:22:20'),(5,'title5','text5','large5.jpg','2016-04-03 18:22:20'),(6,'title6','text6','large6.jpg','2016-04-03 18:22:20'),(7,'t7','text7','','2016-04-28 18:32:46'),(8,'t8','text8','News_12_LargeImage425297619.jpg','2016-04-28 18:36:03'),(9,'news01','news01 text',NULL,'2016-04-28 18:37:06'),(10,'news02','news02 text',NULL,'2016-04-28 18:40:02'),(11,'news02','news02 text',NULL,'2016-04-28 18:40:50'),(12,'news03','news03 text','News_13_LargeImage-1469167147.jpg','2016-04-28 18:43:36'),(13,'news04','news04 text',NULL,'2016-04-28 18:46:07'),(14,'qwe','qwerty','asdf.jpg','2016-04-28 18:47:13'),(15,'news07','news 07','News_15_LargeImage-714823661.jpg','2016-04-28 18:51:08'),(16,'ggg','vgfddf','News_16_LargeImage-714823661.jpg','2016-04-29 09:29:06'),(17,'eve','eveto','News_17_LargeImage-714823661.jpg','2016-04-29 09:58:22'),(18,'feragjerkg','sdfegherkgke',NULL,'2016-05-03 13:12:59'),(19,'dddd','njhhhhh','News_19_LargeImage2010143710.jpg','2016-05-03 15:24:20');
+INSERT INTO `news` VALUES (2,'title2','Драги колеги,\nВ периода 17.07-24.07.2016 г. ФМИ ще бъде домакин на 30-тата Седмица по моделиране на Европейския консорциум за математика в индустрията (ЕКМИ). Това е престижен международен форум, на който студентите имат възможност да работят интензивно в продължение на една седмица в малки интернационални групи под ръководството на 10-15 преподаватели от водещи европейски университети по проекти, чиито теми са свързани с приложенията на математиката в индустрията, информационните технологии, биотехнологиите и др. Подробна информация за събитието, както и част от проектите, по които ще се работи, можете да откриете на уебсайта на Седмицата по моделиране ecmimw2016.fmi.uni-sofia.bg\nСтудентите от ФМИ, желаещи да вземат участие в събитието, трябва да изпратят на имейл адрес ecmimw2016@fmi.uni-sofia.bg следните документи в срок до 15.05.2016 г.:\nCV\nМотивационно писмо\nСправка за успех от следването до този момент\nПрепоръка от преподавател (незадължително)\nЩе бъдат избрани до 12 участници от ФМИ, които трябва да са със статут на бакалаври поне в трети курс, магистри или докторанти към летния семестър на учебната 2015/2016 година.\nУчастниците в Седмицата по моделиране на ЕКМИ ще получат по 3 ECTS кредита.\nДопълнителна информация можете да получите на имейл адрес ecmimw2016@fmi.uni-sofia.bg \nОт Организационния комитет','large2.jpg','2016-04-03 18:22:20'),(6,'title6','text6','large6.jpg','2016-04-03 18:22:20'),(8,'t8','text8','News_12_LargeImage425297619.jpg','2016-04-28 18:36:03'),(10,'news02','news02 text',NULL,'2016-04-28 18:40:02'),(11,'news02','news02 text',NULL,'2016-04-28 18:40:50'),(12,'news03','news03 text','News_13_LargeImage-1469167147.jpg','2016-04-28 18:43:36'),(13,'news04','news04 text',NULL,'2016-04-28 18:46:07'),(14,'qwe','qwerty','asdf.jpg','2016-04-28 18:47:13'),(15,'news07','news 07','News_15_LargeImage-714823661.jpg','2016-04-28 18:51:08'),(16,'ggg','vgfddf','News_16_LargeImage-714823661.jpg','2016-04-29 09:29:06'),(17,'eve','eveto','News_17_LargeImage-714823661.jpg','2016-04-29 09:58:22'),(22,'news1','news description1','News_22_LargeImage2010143710.jpg','2016-05-04 17:39:56'),(23,'news2','news2 \nsome\n\ndescription \nmultiline ','News_23_LargeImage2010143710.jpg','2016-05-04 17:47:49'),(27,'news3 no image','',NULL,'2016-05-04 17:52:49'),(28,'news 001','text',NULL,'2016-05-22 15:38:10'),(29,'news 001','text',NULL,'2016-05-22 15:38:25'),(30,'news 001','text',NULL,'2016-05-22 15:39:25'),(31,'news 001','text',NULL,'2016-05-22 15:41:56'),(32,'news 001','text',NULL,'2016-05-22 15:42:58'),(33,'news 001','text',NULL,'2016-05-22 15:44:05'),(34,'news 001','text',NULL,'2016-05-22 15:45:30'),(35,'news 001','text',NULL,'2016-05-22 15:46:05'),(36,'news 001','text',NULL,'2016-05-22 15:47:02'),(39,'news 003','text',NULL,'2016-05-22 15:48:48'),(40,'news 003','text',NULL,'2016-05-22 15:49:26'),(41,'news 003','text',NULL,'2016-05-22 15:49:29'),(43,'news 004','text',NULL,'2016-05-22 15:49:40'),(45,'news 005','sgjz','News_45_LargeImage-714823661.jpg','2016-05-22 16:00:01'),(47,'some very random tittle that will take some','Факултетът по математика и информатика на Софийски университет „Св. Климент Охридски“ има удоволствието, да Ви покани, да посетите кратък курс по Анализ на оцеляването (Survival analysis) в периода 18-20 юли 2016 г. Лекторите са Лаура Антолини (доц. по медицинска статистистика) и Давиде Бернаскони (постдокторант) от Университета Милано-Бикока, Милано, Италия.Факултетът по математика и информатика на Софийски университет „Св. Климент Охридски“ има удоволствието, да Ви покани, да посетите кратък курс по Анализ на оцеляването (Survival analysis) в периода 18-20 юли 2016 г. Лекторите са Лаура Антолини (доц. по медицинска статистистика) и Давиде Бернаскони (постдокторант) от Университета Милано-Бикока, Милано, Италия.Факултетът по математика и информатика на Софийски университет „Св. Климент Охридски“ има удоволствието, да Ви покани, да посетите кратък курс по Анализ на оцеляването (Survival analysis) в периода 18-20 юли 2016 г. Лекторите са Лаура Антолини (доц. по медицинска статистистика) и Давиде Бернаскони (постдокторант) от Университета Милано-Бикока, Милано, Италия.Факултетът по математика и информатика на Софийски университет „Св. Климент Охридски“ има удоволствието, да Ви покани, да посетите кратък курс по Анализ на оцеляването (Survival analysis) в периода 18-20 юли 2016 г. Лекторите са Лаура Антолини (доц. по медицинска статистистика) и Давиде Бернаскони (постдокторант) от Университета Милано-Бикока, Милано, Италия.','News_47_LargeImage-714823661.jpg','2016-05-22 16:51:12'),(49,'some very random tittle that will take some','x',NULL,'2016-05-23 15:35:47'),(50,'ddd','dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd,ddddddddff',NULL,'2016-05-27 10:28:33'),(51,'hhehdbdb','ehdhrhdh',NULL,'2016-05-27 10:33:37'),(52,'hrhrhd','hrdhhdhd','News_52_LargeImage16541165.jpg','2016-05-27 10:33:57');
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -462,7 +460,9 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `username` varchar(32) NOT NULL,
-  `password` varchar(32) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `key` varchar(45) DEFAULT NULL,
+  `role` varchar(10) NOT NULL DEFAULT 'NONE',
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -473,7 +473,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('lecturer1','l1'),('lecturer2','l2'),('lecturer3','l3'),('student1','s1'),('student2','s2');
+INSERT INTO `user` VALUES ('admin1','6bd9fd77f7cc4501aef3cf8246a97ff14e426a65','81cf6be3','ADMN'),('eve_test','69ae06fbb6a20fe0482e50a79248f38a6d838877','44c028d9','LECT'),('lecturer1','69ae06fbb6a20fe0482e50a79248f38a6d838877','44c028d9','LECT'),('lecturer_test','af9b8107a7bcbbd1103e457f892bd586dc2d632e','1a2a4a45','LECT'),('lecturer_test1','55306791eb5945fad41618fa1f9cb176cca4bc1f','fd630b6b','LECT'),('student1','94518cd254953c65dba0062fb76ed3f7793a8d20','89cb12e1','STUD'),('student2','94518cd254953c65dba0062fb76ed3f7793a8d20','89cb12e1','STUD'),('test_user','c920fa612bca005e8996b66f4f2821e8146ee3ce','9a33879b','STUD'),('user123','eb42d3c782dc1fe0714a71aaa46d12256accaf59','3d5e3d8d','STUD'),('user123456','d1a9f380a8ae7435da9967c06e458de7b0f132a2','fa849cdb','STUD');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -557,19 +557,11 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `AuthenticateUser`(IN `userID` VARCHAR(32), `pass` VARCHAR(32))
+CREATE DEFINER=`root`@`%` PROCEDURE `AuthenticateUser`(IN `userId` VARCHAR(32))
 BEGIN
-	SELECT u.`username`,
-    CASE WHEN s.student_id is not null THEN 'STUD'
-		 WHEN l.user_id is not null THEN 'LECT'
-         ELSE 'NONE' END as role
+	SELECT u.`username`, u.`password`, u.`key`, u.`role`
     FROM user u
-    LEFT JOIN student s
-    ON u.username = s.student_id
-	LEFT JOIN lecturer l
-    ON u.username = l.user_id
-    WHERE u.username = userID
-    AND u.password = pass;
+    WHERE u.`username` = userID;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -596,6 +588,67 @@ BEGIN
     UPDATE `mydb`.`elective_course` SET `taken_spaces`=`taken_spaces` - 1
     WHERE `course_id` = courseId
     AND `semester_id` = (SELECT max(id) FROM semester);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `CreateUser` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`%` PROCEDURE `CreateUser`(IN `userId` VARCHAR(32), `pass` VARCHAR(100), `hashKey` VARCHAR(32), `userRole` VARCHAR(10))
+BEGIN
+	INSERT INTO `user`(`username`, `password`, `key`, `role`)
+    VALUES (userId, pass, hashKey, userRole);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `DeleteEvent` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`%` PROCEDURE `DeleteEvent`(IN eventId INT)
+BEGIN
+	DELETE FROM `mydb`.`event`
+    WHERE `id` = eventId;
+    
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `DeleteNews` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`%` PROCEDURE `DeleteNews`(IN newsId INT)
+BEGIN
+    DELETE FROM `mydb`.`news`
+    WHERE `id` = newsId;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -683,52 +736,106 @@ BEGIN
 	DECLARE progId INT;
     DECLARE usrGrade INT;
     DECLARE semId INT;
+    DECLARE closeDate DATE;
+    DECLARE isClosed BOOL;
     
     SET progId = (SELECT prog_id FROM student WHERE student_id = userId);  
     SET usrGrade = (SELECT grade FROM student WHERE student_id = userId);
     -- Get current semester
  	SET semId = (SELECT max(id) FROM semester);
+    
+    SET closeDate = (SELECT close_date
+    FROM electives_campaign
+    WHERE semester_id  = (SELECT max(id) FROM semester));
+    
+    SET isClosed = closeDate < sysdate();
 
-
-	SELECT c.`id`, c.`name`, c.`description`, c.`category`, c.`credits`, l.`name` as lecturer, ec.`hours`, 
-			ifnull(ac_program.`min_grade`,0) as min_grade,
-            case when ec.`max_spaces` - ec.`taken_spaces` > 0 then 'true' else 'false' end as has_free_spaces, 
-            case when ac_program.`course_id` is not null then 'true' else 'false' end as is_for_my_program,
-            case when ac_program_grade.`course_id` is not null then 'true' else 'false' end as is_for_my_grade, 
-            case when enrolled.`course_id` is not null then 'true' else 'false' end as is_enrolled,
+	SELECT 
+    *
+FROM
+    (SELECT 
+        c.`id`,
+            c.`name`,
+            c.`description`,
+            c.`category`,
+            c.`credits`,
+            l.`name` AS lecturer,
+            ec.`hours`,
+            IFNULL(ac_program.`min_grade`, 0) AS min_grade,
+            CASE
+                WHEN ec.`max_spaces` - ec.`taken_spaces` > 0 THEN 'true'
+                ELSE 'false'
+            END AS has_free_spaces,
+            CASE
+                WHEN ac_program.`course_id` IS NOT NULL THEN 'true'
+                ELSE 'false'
+            END AS is_for_my_program,
+            CASE
+                WHEN ac_program_grade.`course_id` IS NOT NULL THEN 'true'
+                ELSE 'false'
+            END AS is_for_my_grade,
+            CASE
+                WHEN enrolled.`course_id` IS NOT NULL THEN 'true'
+                ELSE 'false'
+            END AS is_enrolled,
             temp.result
-    FROM elective_course ec
-    JOIN course c
-    ON ec.`course_id` = c.`id`
-    JOIN lecturer l
-    ON ec.`lecturer_id` = l.`user_id`
-    LEFT OUTER JOIN (SELECT * FROM allowed_course ac WHERE ac.`program_id` = progId) as ac_program
-    ON ec.`course_id` = ac_program.`course_id`
-    LEFT OUTER JOIN (SELECT * FROM allowed_course ac WHERE ac.`program_id` = progId AND ac.`min_grade` <= usrGrade) as ac_program_grade
-    ON ec.`course_id` = ac_program_grade.`course_id`
-    LEFT OUTER JOIN (SELECT * FROM enrolled_course enc WHERE enc.`student_id` = userId AND enc.`semester_id` = semId) as enrolled
-    ON ec.`course_id` = enrolled.`course_id`
-    LEFT OUTER JOIN (SELECT info.course_id,info.semester_id,
-		GROUP_CONCAT( CONCAT(info.weekDay, ' ', info.courseTime, ' ', info.location) SEPARATOR '\n') as result
-			FROM (SELECT CASE WHEN cs.`week_day` = 1 THEN 'понеделник'
-				  WHEN cs.`week_day` = 2 THEN 'вторник'
-				  WHEN cs.`week_day` = 3 THEN 'сряда'
-				  WHEN cs.`week_day` = 4 THEN 'четвъртък'
-				  WHEN cs.`week_day` = 5 THEN 'петък'
-				  WHEN cs.`week_day` = 6 THEN 'събота'
-				  WHEN cs.`week_day` = 7 THEN 'неделя'
-				  WHEN cs.`week_day` = 0 THEN 'неделя'
-				  ELSE 'NONE' END as weekDay,
-			CONCAT(cs.`start_time`,'-', cs.`end_time`) as courseTime,
-			ifnull(CONCAT(r.`room_number`, '/', r.`building`), '') as location,
-            cs.course_id, cs.semester_id
-			FROM course_schedule cs
-			LEFT OUTER JOIN room r
-			ON cs.`room_id` = r.`id`) as info 
-			GROUP BY info.course_id, info.semester_id) as temp
-			ON ec.`course_id` = temp.`course_id`
-			AND ec.`semester_id` = temp.`semester_id`
-			WHERE ec.`semester_id` = semId;
+    FROM
+        elective_course ec
+    JOIN course c ON ec.`course_id` = c.`id`
+    JOIN lecturer l ON ec.`lecturer_id` = l.`user_id`
+    LEFT OUTER JOIN (SELECT 
+        *
+    FROM
+        allowed_course ac
+    WHERE
+        ac.`program_id` = progId) AS ac_program ON ec.`course_id` = ac_program.`course_id`
+    LEFT OUTER JOIN (SELECT 
+        *
+    FROM
+        allowed_course ac
+    WHERE
+        ac.`program_id` = progId
+            AND ac.`min_grade` <= usrGrade) AS ac_program_grade ON ec.`course_id` = ac_program_grade.`course_id`
+    LEFT OUTER JOIN (SELECT 
+        *
+    FROM
+        enrolled_course enc
+    WHERE
+        enc.`student_id` = userId
+            AND enc.`semester_id` = semId) AS enrolled ON ec.`course_id` = enrolled.`course_id`
+    LEFT OUTER JOIN (SELECT 
+        info.course_id,
+            info.semester_id,
+            GROUP_CONCAT(CONCAT(info.weekDay, ' ', info.courseTime, ' ', info.location)
+                SEPARATOR '
+                                ') AS result
+    FROM
+        (SELECT 
+        CASE
+                WHEN cs.`week_day` = 1 THEN 'понеделник'
+                WHEN cs.`week_day` = 2 THEN 'вторник'
+                WHEN cs.`week_day` = 3 THEN 'сряда'
+                WHEN cs.`week_day` = 4 THEN 'четвъртък'
+                WHEN cs.`week_day` = 5 THEN 'петък'
+                WHEN cs.`week_day` = 6 THEN 'събота'
+                WHEN cs.`week_day` = 7 THEN 'неделя'
+                WHEN cs.`week_day` = 0 THEN 'неделя'
+                ELSE 'NONE'
+            END AS weekDay,
+            CONCAT(cs.`start_time`, '-', cs.`end_time`) AS courseTime,
+            IFNULL(CONCAT(r.`room_number`, '/', r.`building`), '') AS location,
+            cs.course_id,
+            cs.semester_id
+    FROM
+        course_schedule cs
+    LEFT OUTER JOIN room r ON cs.`room_id` = r.`id`) AS info
+    GROUP BY info.course_id , info.semester_id) AS temp ON ec.`course_id` = temp.`course_id`
+        AND ec.`semester_id` = temp.`semester_id`
+    WHERE
+        ec.`semester_id` = semId) as t
+WHERE
+    t.is_enrolled = IF(isClosed, 'true', t.is_enrolled);
+            
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -764,11 +871,11 @@ DELIMITER ;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_VALUE_ON_ZERO' */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`%` PROCEDURE `GetEvents`()
 BEGIN
-	SELECT e.`abbreviation`, e.`title` as name, e.`description` as description,
+	SELECT e.`id`, e.`abbreviation`, e.`title` as name, e.`description` as description,
     e.`date` as event_date, e.`start_time` as start_time, e.`end_time` as end_time, 
     concat(r.`room_number`, '/', r.`building`) as location, 'EVENT' as type_code
     FROM event e
@@ -848,12 +955,12 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `GetNews`(IN newsID INT, chunkSize INT)
+CREATE DEFINER=`root`@`%` PROCEDURE `GetNews`(IN newsID INT, chunkSize INT, fullContent VARCHAR(1))
 BEGIN
 	DECLARE news_id INT;
     SET news_id = ifnull(newsID, (SELECT MAX(id)+1 FROM news));
     
-    SELECT n.`id`, n.`title`, n.`image` as image, n.`creation_datetime`
+    SELECT n.`id`, n.`title`, IF (fullContent = 'Y', n.`image`, null) as image, n.`creation_datetime`  
     FROM news n
     WHERE n.`id` < news_id
     ORDER BY n.`id` desc
@@ -875,9 +982,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `GetNewsDetail`(IN newsID INT)
+CREATE DEFINER=`root`@`%` PROCEDURE `GetNewsDetail`(IN newsID INT, fullContent VARCHAR(1))
 BEGIN
-	SELECT n.`id`, n.`title`,n.`text`, n.`image` as image, n.`creation_datetime`
+	SELECT n.`id`, n.`title`,n.`text`,IF (fullContent = 'Y', n.`image`, null) as image, n.`creation_datetime`
     FROM news n
     WHERE n.`id` = newsID
     ORDER BY n.`id` desc;
@@ -1005,4 +1112,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-03 16:43:38
+-- Dump completed on 2016-05-27 11:19:21
